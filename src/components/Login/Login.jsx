@@ -53,22 +53,40 @@ export default function Login() {
       console.log(response);
     }
   };
+
+  const moveSignup = () => {
+    navigate('/signup');
+  };
+
   return (
-    <div className={styles.Box}>
-      <h2>Log in</h2>
+    <div className={styles.container}>
+      <h2 className={styles.title}>Login</h2>
       <div>
-        <div>Email</div>
-        <input type="email" onChange={onEmailHandler} />
+        <input
+          className={styles.inputArea}
+          type="email"
+          placeholder="Email Address"
+          onChange={onEmailHandler}
+        />
       </div>
       <div>
-        <div>password</div>
-        <input type="password" onChange={onPasswordHandler} />
+        <input
+          className={styles.inputArea}
+          placeholder="Password"
+          type="password"
+          onChange={onPasswordHandler}
+        />
       </div>
       <div>
-        <button disabled={isEmail || isPassword} onClick={handleSignIn}>
+        <button
+          className={styles.loginbtn}
+          disabled={isEmail || isPassword}
+          onClick={handleSignIn}
+        >
           Login
         </button>
       </div>
+      Not a member? <a onClick={moveSignup}>Sign Up</a>
     </div>
   );
 }
