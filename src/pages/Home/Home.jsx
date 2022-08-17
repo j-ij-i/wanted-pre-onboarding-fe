@@ -12,7 +12,6 @@ export default function Home() {
   });
   return (
     <div>
-      <h1>Wanted Pre-OnBoarding-Assignment</h1>
       <SignUp />
       <Login />
     </div>

@@ -2,6 +2,8 @@ import { createTodo } from 'api/Todo';
 import { todoListState } from 'atoms/atoms';
 import React, { useState } from 'react';
 import { useSetRecoilState } from 'recoil';
+import { BsPlusSquareFill } from 'react-icons/bs';
+import styles from './TodoInput.module.css';
 
 export default function TodoInput() {
   const [todoitem, SetToDo] = useState('');
@@ -21,9 +23,18 @@ export default function TodoInput() {
   };
 
   return (
-    <div>
-      <input onChange={TodoHandler} value={todoitem} />
-      <button onClick={addDo}>+</button>
+    <div className={styles.container}>
+      <div>
+        <input
+          placeholder=" To do ..."
+          className={styles.todoInput}
+          onChange={TodoHandler}
+          value={todoitem}
+        />
+      </div>
+      <div>
+        <BsPlusSquareFill onClick={addDo} className={styles.createBtn} />
+      </div>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { signIn } from 'api/Auth';
 import React, { useState } from 'react';
+import styles from './Login.module.css';
 import { useNavigate } from 'react-router';
 
 export default function Login() {
@@ -53,7 +54,7 @@ export default function Login() {
     }
   };
   return (
-    <div>
+    <div className={styles.Box}>
       <h2>Log in</h2>
       <div>
         <div>Email</div>

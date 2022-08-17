@@ -1,6 +1,7 @@
 import { signUp } from 'api/Auth';
 import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
+import styles from './SignUp.module.css';
 
 export default function SignUp() {
   const navigate = useNavigate();

@@ -3,6 +3,7 @@ import { todoListState } from 'atoms/atoms';
 import TodoItem from 'components/TodoItem/TodoItem';
 import React, { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
+import styles from './TodoList.module.css';
 
 export default function TodoList() {
   const [isLoading, setIsLoading] = useState(true);
@@ -19,7 +20,7 @@ export default function TodoList() {
   }, []);
 
   return (
-    <>
+    <div className={styles.container}>
       {!isLoading ? (
         <div>로딩중</div>
       ) : (
@@ -33,7 +34,6 @@ export default function TodoList() {
                     des={data.todo}
                     complete={data.isCompleted}
                   />
-                  {data.id}
                 </div>
               ))}
             </div>
@@ -42,6 +42,6 @@ export default function TodoList() {
           )}
         </div>
       )}
-    </>
+    </div>
   );
 }

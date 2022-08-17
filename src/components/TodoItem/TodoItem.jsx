@@ -2,6 +2,15 @@ import { deleteTodo, updateTodo } from 'api/Todo';
 import { todoListState } from 'atoms/atoms';
 import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
+import {
+  BsCheckCircleFill,
+  BsCircle,
+  BsFillTrashFill,
+  BsPencilSquare,
+  BsFillCheckSquareFill,
+  BsXSquareFill,
+} from 'react-icons/bs';
+import styles from './TodoItem.module.css';
 
 export default function TodoItem({ id, des, complete }) {
   const [todolist, setList] = useRecoilState(todoListState);
@@ -53,28 +62,42 @@ export default function TodoItem({ id, des, complete }) {
     <div>
       <div>
         {updateMode ? (
-          <>
-            {' '}
-            <input
-              type="checkbox"
-              checked={complete_value}
-              onChange={CheckHandler}
-            />
-            <input value={value} onChange={onChange} />
-            <button onClick={setUpdate}>수정 </button>
-            <button onClick={UpdateToggleBtn}>취소 </button>
-          </>
+          <div className={styles.container}>
+            <div className={styles.btnIcon} onClick={CheckHandler}>
+              {complete_value ? <BsCheckCircleFill /> : <BsCircle />}
+            </div>
+            <div>
+              <input
+                className={styles.updateInput}
+                value={value}
+                onChange={onChange}
+              />
+            </div>
+            <div className={styles.editArea}>
+              <div className={styles.btnIcon}>
+                <BsFillCheckSquareFill onClick={setUpdate} />
+              </div>
+              <div className={styles.btnIcon}>
+                <BsXSquareFill onClick={UpdateToggleBtn} />
+              </div>
+            </div>
+          </div>
         ) : (
           <>
-            {' '}
-            <input
-              type="checkbox"
-              checked={complete_value}
-              onChange={CheckHandler}
-            />
-            {des}
-            <button onClick={UpdateToggleBtn}>수정</button>
-            <button onClick={deletetodo}>삭제</button>
+            <div className={styles.container}>
+              <div className={styles.btnIcon} onClick={CheckHandler}>
+                {complete_value ? <BsCheckCircleFill /> : <BsCircle />}
+              </div>
+              <div>{des}</div>
+              <div className={styles.editArea}>
+                <div className={styles.btnIcon}>
+                  <BsPencilSquare onClick={UpdateToggleBtn} />
+                </div>
+                <div className={styles.btnIcon}>
+                  <BsFillTrashFill onClick={deletetodo} />
+                </div>
+              </div>
+            </div>
           </>
         )}
       </div>
